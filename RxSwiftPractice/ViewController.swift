@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         setupTableView()
         setupSwitch()
         setupSign()
+        justTest()
     }
     
     private func configureView() {
@@ -175,3 +176,19 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController {
+    private func justTest() {
+        let itemA = [3.3, 4.0, 5.0, 2.0, 3.6, 4.8]
+        Observable.just(itemA)
+            .subscribe { value in
+                print("just - \(value)")
+            } onError: { error in
+                print("just error -\(error)")
+            } onCompleted: {
+                print("just completed")
+            } onDisposed: {
+                print("just disposed")
+            }
+            .disposed(by: disposeBag)
+    }
+}

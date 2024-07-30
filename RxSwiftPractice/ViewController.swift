@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         setupSwitch()
         setupSign()
         justTest()
+        ofTest()
     }
     
     private func configureView() {
@@ -188,6 +189,22 @@ extension ViewController {
                 print("just completed")
             } onDisposed: {
                 print("just disposed")
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func ofTest() {
+        let itemA = [3.3, 4.0, 5.0, 2.0, 3.6, 4.8]
+        let itemB = [2.3, 2.0, 1.3, 1.2] //다른타입은 안되네
+        Observable.of(itemA, itemB)
+            .subscribe { value in
+                print("of \(value)")
+            } onError: { error in
+                print("of \(error)")
+            } onCompleted: {
+                print("of completed")
+            } onDisposed: {
+                print("of disposed")
             }
             .disposed(by: disposeBag)
     }

@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         justTest()
         ofTest()
         fromTest()
+        takeTest()
     }
     
     private func configureView() {
@@ -221,6 +222,21 @@ extension ViewController {
                 print("from completed")
             } onDisposed: {
                 print("from disposed")
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func takeTest() {
+        Observable.repeatElement("Test")
+            .take(5)
+            .subscribe { value in
+                print("repeatElement \(value)")
+            } onError: { error in
+                print("repeatElement \(error)")
+            } onCompleted: {
+                print("repeatElement completed")
+            } onDisposed: {
+                print("repeatElement disposed")
             }
             .disposed(by: disposeBag)
     }

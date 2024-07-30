@@ -16,12 +16,14 @@ final class SimplePickerViewController: UIViewController {
     
     private let blackPickerView = UIPickerView()
     private let attributedPickerView = UIPickerView()
+    private let colorPickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         setupBlackPickerView()
         setupattributedPickerView()
+        setupColorPickerView()
     }
     
     private func configureView() {
@@ -29,6 +31,7 @@ final class SimplePickerViewController: UIViewController {
         
         view.addSubview(blackPickerView)
         view.addSubview(attributedPickerView)
+        view.addSubview(colorPickerView)
         
         blackPickerView.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -36,6 +39,11 @@ final class SimplePickerViewController: UIViewController {
         
         attributedPickerView.snp.makeConstraints {
             $0.top.equalTo(blackPickerView.snp.bottom)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        colorPickerView.snp.makeConstraints {
+            $0.top.equalTo(attributedPickerView.snp.bottom)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -62,6 +70,29 @@ final class SimplePickerViewController: UIViewController {
                 return NSAttributedString(string: "\(element)",
                                           attributes: [.foregroundColor: UIColor.systemCyan, .underlineStyle: NSUnderlineStyle.single.rawValue])
             }
+            .disposed(by: disposeBag)
+        
+        attributedPickerView.rx.modelSelected(Int.self)
+            .subscribe(onNext: { value in
+                print("blackPickerView Selected \(value)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupColorPickerView() {
+        let items: [UIColor] = [.red, .orange, .yellow, .green, .blue]
+        Observable.just(items)
+            .bind(to: colorPickerView.rx.items) { row, element, view in
+                let colorView = UIView()
+                colorView.backgroundColor = element
+                return colorView
+            }
+            .disposed(by: disposeBag)
+        
+        colorPickerView.rx.modelSelected(UIColor.self)
+            .subscribe(onNext: { value in
+                print("colorPickerView Selected \(value)")
+            })
             .disposed(by: disposeBag)
     }
 }

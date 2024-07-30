@@ -15,6 +15,7 @@
 		54F2122C2C5908F90040581F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54F2122B2C5908F90040581F /* SnapKit */; };
 		54F2122F2C5909060040581F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 54F2122E2C5909060040581F /* RxCocoa */; };
 		54F212312C5909060040581F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54F212302C5909060040581F /* RxSwift */; };
+		54F212342C5913680040581F /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F212332C5913680040581F /* SimpleTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		54F2121F2C5908130040581F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54F212222C5908130040581F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54F212242C5908130040581F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54F212332C5913680040581F /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				54F212162C5908110040581F /* AppDelegate.swift */,
 				54F212182C5908110040581F /* SceneDelegate.swift */,
 				54F2121A2C5908110040581F /* ViewController.swift */,
+				54F212332C5913680040581F /* SimpleTableViewController.swift */,
 				54F2121F2C5908130040581F /* Assets.xcassets */,
 				54F212212C5908130040581F /* LaunchScreen.storyboard */,
 				54F212242C5908130040581F /* Info.plist */,
@@ -152,6 +155,7 @@
 				54F2121B2C5908110040581F /* ViewController.swift in Sources */,
 				54F212172C5908110040581F /* AppDelegate.swift in Sources */,
 				54F212192C5908110040581F /* SceneDelegate.swift in Sources */,
+				54F212342C5913680040581F /* SimpleTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

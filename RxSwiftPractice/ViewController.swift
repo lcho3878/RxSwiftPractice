@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         setupSign()
         justTest()
         ofTest()
+        fromTest()
     }
     
     private func configureView() {
@@ -205,6 +206,21 @@ extension ViewController {
                 print("of completed")
             } onDisposed: {
                 print("of disposed")
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func fromTest() {
+        let itemA = [3.3, 4.0, 5.0, 2.0, 3.6, 4.8]
+        Observable.from(itemA) // optional? -> 배열그대로 리턴
+            .subscribe { value in
+                print("from \(value)")
+            } onError: { error in
+                print("from \(error)")
+            } onCompleted: {
+                print("from completed")
+            } onDisposed: {
+                print("from disposed")
             }
             .disposed(by: disposeBag)
     }

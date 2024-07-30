@@ -17,12 +17,14 @@ class ViewController: UIViewController {
     private let simplePickerView = UIPickerView()
     private let simpleLabel = UILabel()
     private let simpleTableView = UITableView()
+    private let simpleSwitch = UISwitch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         setupPickerView()
         setupTableView()
+        setupSwitch()
     }
     
     private func configureView() {
@@ -31,6 +33,7 @@ class ViewController: UIViewController {
         view.addSubview(simplePickerView)
         view.addSubview(simpleLabel)
         view.addSubview(simpleTableView)
+        view.addSubview(simpleSwitch)
         
         simplePickerView.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -47,6 +50,12 @@ class ViewController: UIViewController {
             $0.top.equalTo(simpleLabel.snp.bottom).offset(8)
             $0.horizontalEdges.equalTo(view.safeAreaInsets)
             $0.height.equalTo(100)
+        }
+        
+        simpleSwitch.snp.makeConstraints {
+            $0.top.equalTo(simpleTableView.snp.bottom).offset(8)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(50)
         }
     }
     
@@ -90,6 +99,17 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
+    private func setupSwitch() {
+        Observable.of(true)
+            .bind(to: simpleSwitch.rx.isOn)
+            .disposed(by: disposeBag)
+        
+        simpleSwitch.rx.isOn
+            .map { "스위치가 \($0) 되었습니다." }
+            .bind(to: simpleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
 
 }
 

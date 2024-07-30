@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     private let simpleLabel = UILabel()
     private let simpleTableView = UITableView()
     private let simpleSwitch = UISwitch()
+    private let signNameTextField = UITextField()
+    private let signEmailTextField = UITextField()
+    private let signButton = UIButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,7 @@ class ViewController: UIViewController {
         setupPickerView()
         setupTableView()
         setupSwitch()
+        setupSign()
     }
     
     private func configureView() {
@@ -34,6 +39,9 @@ class ViewController: UIViewController {
         view.addSubview(simpleLabel)
         view.addSubview(simpleTableView)
         view.addSubview(simpleSwitch)
+        view.addSubview(signNameTextField)
+        view.addSubview(signEmailTextField)
+        view.addSubview(signButton)
         
         simplePickerView.snp.makeConstraints {
             $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -55,6 +63,24 @@ class ViewController: UIViewController {
         simpleSwitch.snp.makeConstraints {
             $0.top.equalTo(simpleTableView.snp.bottom).offset(8)
             $0.centerX.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        signNameTextField.snp.makeConstraints {
+            $0.top.equalTo(simpleSwitch.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        signEmailTextField.snp.makeConstraints {
+            $0.top.equalTo(signNameTextField.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        signButton.snp.makeConstraints {
+            $0.top.equalTo(signEmailTextField.snp.bottom).offset(8)
+            $0.width.equalTo(100)
             $0.height.equalTo(50)
         }
     }
@@ -110,6 +136,42 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    private func setupSign() {
+        signNameTextField.placeholder = "이름 입력"
+        signEmailTextField.placeholder = "이메일 입력"
+        signButton.backgroundColor = .blue
+
+        Observable.combineLatest(signNameTextField.rx.text.orEmpty,
+                                 signEmailTextField.rx.text.orEmpty) {
+            name, email in
+            return "이름은 \(name) 이메일은 \(email)입니다."
+        }
+        .bind(to: simpleLabel.rx.text)
+        .disposed(by: disposeBag)
+        
+        signNameTextField.rx.text.orEmpty
+            .map { $0.count < 4 }
+            .bind(to: signEmailTextField.rx.isHidden, signButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        signEmailTextField.rx.text.orEmpty
+            .map { $0.count > 4 }
+            .bind(to: signButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        signButton.rx.tap
+            .subscribe { _ in
+                self.showAlert()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: nil, message: "알림!", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ok", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
 
 }
 

@@ -18,6 +18,7 @@
 		54F212342C5913680040581F /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F212332C5913680040581F /* SimpleTableViewController.swift */; };
 		54F212362C5942C80040581F /* SimplePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F212352C5942C80040581F /* SimplePickerViewController.swift */; };
 		54F2123B2C5A08D10040581F /* AddingNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2123A2C5A08D10040581F /* AddingNumberViewController.swift */; };
+		54F2123D2C5A0DFB0040581F /* SimpleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F2123C2C5A0DFB0040581F /* SimpleValidationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		54F212332C5913680040581F /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 		54F212352C5942C80040581F /* SimplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewController.swift; sourceTree = "<group>"; };
 		54F2123A2C5A08D10040581F /* AddingNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNumberViewController.swift; sourceTree = "<group>"; };
+		54F2123C2C5A0DFB0040581F /* SimpleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				54F212332C5913680040581F /* SimpleTableViewController.swift */,
 				54F212352C5942C80040581F /* SimplePickerViewController.swift */,
 				54F2123A2C5A08D10040581F /* AddingNumberViewController.swift */,
+				54F2123C2C5A0DFB0040581F /* SimpleValidationViewController.swift */,
 				54F2121F2C5908130040581F /* Assets.xcassets */,
 				54F212212C5908130040581F /* LaunchScreen.storyboard */,
 				54F212242C5908130040581F /* Info.plist */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54F2123B2C5A08D10040581F /* AddingNumberViewController.swift in Sources */,
+				54F2123D2C5A0DFB0040581F /* SimpleValidationViewController.swift in Sources */,
 				54F2121B2C5908110040581F /* ViewController.swift in Sources */,
 				54F212172C5908110040581F /* AppDelegate.swift in Sources */,
 				54F212192C5908110040581F /* SceneDelegate.swift in Sources */,
